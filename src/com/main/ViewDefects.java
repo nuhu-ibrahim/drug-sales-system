@@ -1,0 +1,238 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.main;
+
+
+import com.dataStructures.MyContainer;
+import com.dataStructures.MyTable;
+import com.dataStructures.MyVisitor;
+import com.dataStructures.ResultSetTableModel;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.regex.Pattern;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.TableColumn;
+
+/**
+ *
+ * @author NUHU
+ */
+public class ViewDefects extends javax.swing.JPanel {
+
+    Options main;
+    public ViewDefects(Options main) {
+        this.main=main;
+        DBConnect.connect();
+        initComponents();
+    }
+    /*
+    private void createTable(){
+        String sql="select postalDate, personneltbl.serviceID, firstname, lastname, unittbl.unitID "
+                + "from personnelTbl, postaltbl, unittbl "
+                + "where postalTbl.serviceID = personnelTbl.serviceID and postaltbl.unitID='"+unitID.getText().trim()+"' and postaltbl.unitID=unittbl.unitID";
+
+        JTable table;
+        TableColumn column = null;
+        JScrollPane scrollPane;
+        String meta[]={"Date", "Service ID", "Firstname", "Lastname", "Unit ID"};
+        table= MyTable.createTable(sql, meta);
+        table.setPreferredScrollableViewportSize(new Dimension(763, 180));
+        scrollPane = new JScrollPane(table);
+        /*
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                try{
+                    int row= table.getSelectedRow();
+                    String table_click1=table.getModel().getValueAt(row, 0).toString();
+                    String table_click2=table.getModel().getValueAt(row, 1).toString();
+                    String table_click3=table.getModel().getValueAt(row, 2).toString();
+                    //System.out.println(table_click1+"\n"+table_click2+"\n"+table_click3);
+                    String sql= "select * from OffenderInfo where LicenseNo='" + table_click1 + "'";
+                    DBConnection.rs=DBConnection.st.executeQuery(sql);
+                    if(DBConnection.rs.next()){
+                        shortname=DBConnection.rs.getString("Firstname");
+                        licenceNo=DBConnection.rs.getString("LicenseNo");
+                        passport=DBConnection.rs.getString("Passport");
+                        carNo=DBConnection.rs.getString("CarPlateNo");
+                        String sql2= "select * from CitizenOffence where LicenseNo='"+table_click1+"' AND ReportDate='"+table_click2+"' AND Penalty='"+table_click3+"'";
+                        DBConnection.rs=DBConnection.st.executeQuery(sql2);
+                        if(DBConnection.rs.next()){
+                            reportDate=DBConnection.rs.getString("ReportDate");
+                            offenceDate=DBConnection.rs.getString("OffenceDate");
+                            marshalID=DBConnection.rs.getString("MarshalID");
+                            offenceCode=DBConnection.rs.getString("OffenceCode");
+                            penalty=DBConnection.rs.getString("Penalty");
+                            ClearCharge reg = new ClearCharge();
+                            MenuPage.contentPanel.removeAll();
+                            MenuPage.contentPanel.add(reg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0) );
+                            MenuPage.contentPanel.setVisible(false);
+                            MenuPage.contentPanel.setVisible(true);
+                        }
+                    }
+                }catch(Exception ex){
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
+        for (int i = 0; i < 5; i++) {
+                column = table.getColumnModel().getColumn(i);
+                if (i == 0) //MemberID
+                        column.setPreferredWidth(80);
+                if (i == 1) //ID
+                        column.setPreferredWidth(110);
+                if (i == 2) //MemberID
+                        column.setPreferredWidth(150);
+                if (i == 3) //ID
+                        column.setPreferredWidth(80);
+                if (i == 4) //ID
+                        column.setPreferredWidth(80);
+        }
+        contentPanel.removeAll();
+        scrollPane.setViewportView(table);
+        contentPanel.add(scrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(4, 0, 665, 240));
+        contentPanel.setVisible(false);
+        contentPanel.setVisible(true);
+    }*/
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel2 = new javax.swing.JPanel();
+        uDemo16 = new javax.swing.JLabel();
+        circum = new javax.swing.JTextField();
+        uDemo17 = new javax.swing.JLabel();
+        circum1 = new javax.swing.JTextField();
+        compute2 = new javax.swing.JButton();
+        contentPanel = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        compute1 = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        setPreferredSize(new java.awt.Dimension(588, 418));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 12, 92)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        uDemo16.setFont(new java.awt.Font("Simplified Arabic Fixed", 0, 18)); // NOI18N
+        uDemo16.setForeground(new java.awt.Color(0, 0, 102));
+        uDemo16.setText("From (Date)");
+        jPanel2.add(uDemo16, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, -1, 30));
+
+        circum.setEditable(false);
+        circum.setBackground(new java.awt.Color(204, 204, 255));
+        circum.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        circum.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel2.add(circum, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 10, 110, -1));
+
+        uDemo17.setFont(new java.awt.Font("Simplified Arabic Fixed", 0, 18)); // NOI18N
+        uDemo17.setForeground(new java.awt.Color(0, 0, 102));
+        uDemo17.setText("To (Date)");
+        jPanel2.add(uDemo17, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, -1, 30));
+
+        circum1.setEditable(false);
+        circum1.setBackground(new java.awt.Color(204, 204, 255));
+        circum1.setFont(new java.awt.Font("Serif", 1, 18)); // NOI18N
+        circum1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
+        jPanel2.add(circum1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, 110, -1));
+
+        compute2.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        compute2.setText("Generate Report");
+        compute2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153), 2));
+        compute2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compute2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(compute2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 50, 170, 35));
+
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 50, 490, 100));
+
+        contentPanel.setBackground(new java.awt.Color(255, 255, 255));
+        contentPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        contentPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(contentPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 590, 200));
+
+        jPanel4.setBackground(new java.awt.Color(51, 51, 255));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel5.setFont(new java.awt.Font("Tiger Expert", 1, 24)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("VIEW TRANSACTION REPORT");
+        jPanel4.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
+
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 590, 40));
+
+        jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setFont(new java.awt.Font("Tiger Expert", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 153));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("REPORT");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 580, 40));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 590, -1));
+
+        compute1.setFont(new java.awt.Font("Monospaced", 0, 14)); // NOI18N
+        compute1.setText("Close");
+        compute1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 153), 2));
+        compute1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                compute1ActionPerformed(evt);
+            }
+        });
+        add(compute1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 410, 170, 35));
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void compute1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compute1ActionPerformed
+        MainMenuTest.contentPanel.removeAll();
+        MainMenuTest.contentPanel.setVisible(false);
+        MainMenuTest.contentPanel.setVisible(true);
+        
+        main.refresh();
+    }//GEN-LAST:event_compute1ActionPerformed
+
+    private void compute2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_compute2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_compute2ActionPerformed
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField circum;
+    private javax.swing.JTextField circum1;
+    private javax.swing.JButton compute1;
+    private javax.swing.JButton compute2;
+    public static javax.swing.JPanel contentPanel;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JLabel uDemo16;
+    private javax.swing.JLabel uDemo17;
+    // End of variables declaration//GEN-END:variables
+    public static String getMsg(){
+        return "UNIT PERSONNEL INFORMATION PAGE";
+    }
+}
